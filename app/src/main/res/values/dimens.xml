@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="adjust_dialog_et_height">36dp</dimen>
+
+<!--    <drawable name="shape_input_text_popup_bg"></drawable>-->
+</resources>

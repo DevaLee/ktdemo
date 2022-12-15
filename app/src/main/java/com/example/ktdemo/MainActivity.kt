@@ -2,14 +2,19 @@ package com.example.ktdemo
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.nfc.Tag
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings.Global
+import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewTreeObserver
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.example.ktdemo.fragment.AdjustLocationDialog
+import com.example.ktdemo.fragment.SimpleDialog
 import com.example.ktdemo.service.ServiceStartDemo
 import com.example.ktdemo.testdat.DataParcel
 import com.example.ktdemo.testdat.DataTestExamine
@@ -86,6 +91,32 @@ class MainActivity : AppCompatActivity() {
 
         })
 
+        val textView = findViewById<TextView>(R.id.textView_tv)
+
+        textView.setOnTouchListener { p0, p1 ->
+            val downX = p1?.x
+            val downY = p1?.y
+
+            val rawX = p1?.rawX
+            val rawY = p1?.rawY
+
+            println("downX: $downX, downY: $downY, rawX:$rawX, rawY: $rawY")
+            false
+        }
+
+        textView.setOnClickListener {
+
+            println("on click listener")
+        }
+//      btn.setOnTouchListener(object  :View.OnTouchListener {
+//          @SuppressLint("ClickableViewAccessibility")
+//          override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
+//            val downX = p1?.x;
+//              val downY = p1?.y
+//            return false
+//          }
+//
+//      })
 //        val  conn = DbConnection()
 //        conn.config(DbConfig().apply { url = "mysql:22:33:212:44"
 //            username = "xu Tony"
@@ -101,8 +132,9 @@ class MainActivity : AppCompatActivity() {
 //        weightLight()
 //        substractFun();
 
-        startService()
+//        startService()
     }
+
 
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
@@ -139,9 +171,32 @@ class MainActivity : AppCompatActivity() {
 //            val resultCode = it.resultCode
 //        }.launch(intent)
 
-        startService()
+//        startService()
+//            popSimpleDialog1("title",   "contentssssssss")
+        showInputTextDialog(0, 500)
+    }
+
+    private  fun showInputTextDialog(x: Int, y: Int) {
+        var dialog = AdjustLocationDialog.newDialog(100, 1600)
+//        var bundle = Bundle()
+//        bundle.putInt(AdjustLocationDialog.K_X, 200)
+//        bundle.putInt(AdjustLocationDialog.K_Y, 400)
+//        dialog.arguments = bundle
+
+
+        dialog.show(supportFragmentManager, "ss")
 
     }
+
+    private fun popSimpleDialog1(title: String, content: String){
+        var dialog = SimpleDialog()
+        var bundle = Bundle()
+        bundle.putString(SimpleDialog.K_TITLE, title)
+        bundle.putString(SimpleDialog.K_CONTENT, content)
+        dialog.arguments = bundle
+        dialog.show(supportFragmentManager, "one-tag")
+    }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
