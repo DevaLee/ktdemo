@@ -44,6 +44,8 @@ class AdjustLocationDialog(): DialogFragment() {
         val lp = dialogWindow?.attributes
         dialogWindow?.setGravity(Gravity.TOP or Gravity.START)
         dialogWindow?.setBackgroundDrawableResource(android.R.color.holo_red_dark)
+        dialogWindow?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE or WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+
         lp?.width = WindowManager.LayoutParams.WRAP_CONTENT
 
         var bundle = arguments

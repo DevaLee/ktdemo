@@ -14,6 +14,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.example.ktdemo.fragment.AdjustLocationDialog
+import com.example.ktdemo.fragment.BlackRedConfirmDialog
 import com.example.ktdemo.fragment.SimpleDialog
 import com.example.ktdemo.service.ServiceStartDemo
 import com.example.ktdemo.testdat.DataParcel
@@ -57,19 +58,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        "kotlin".also {
-            println("结果: ${it.plus("-java")}")
-        }.also {
-            println("结果：${it.plus("-php")}")
-        }
+//        "kotlin".also {
+//            println("结果: ${it.plus("-java")}")
+//        }.also {
+//            println("结果：${it.plus("-php")}")
+//        }
 
-
-        "kotlin".apply {
-            println("结果: ${this.plus("-java")}")
-        }.apply {
-            println("结果: ${this.plus("-php")}")
-
-        }
+//
+//        "kotlin".apply {
+//            println("结果: ${this.plus("-java")}")
+//        }.apply {
+//            println("结果: ${this.plus("-php")}")
+//        }
 
         var btn = findViewById<Button>(R.id.button3)
 
@@ -133,6 +133,12 @@ class MainActivity : AppCompatActivity() {
 //        substractFun();
 
 //        startService()
+//        buildBlackRedDialog()
+    }
+
+    private fun buildBlackRedDialog(){
+        var dialog = BlackRedConfirmDialog.build("红和黑","这个是内容","取消","确认")
+        dialog.show(supportFragmentManager, "SSDE")
     }
 
 
@@ -173,7 +179,8 @@ class MainActivity : AppCompatActivity() {
 
 //        startService()
 //            popSimpleDialog1("title",   "contentssssssss")
-        showInputTextDialog(0, 500)
+//        showInputTextDialog(0, 500)
+        buildBlackRedDialog()
     }
 
     private  fun showInputTextDialog(x: Int, y: Int) {
