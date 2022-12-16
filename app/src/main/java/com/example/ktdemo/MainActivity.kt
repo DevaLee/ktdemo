@@ -13,9 +13,7 @@ import android.view.ViewTreeObserver
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import com.example.ktdemo.fragment.AdjustLocationDialog
-import com.example.ktdemo.fragment.BlackRedConfirmDialog
-import com.example.ktdemo.fragment.SimpleDialog
+import com.example.ktdemo.fragment.*
 import com.example.ktdemo.service.ServiceStartDemo
 import com.example.ktdemo.testdat.DataParcel
 import com.example.ktdemo.testdat.DataTestExamine
@@ -134,6 +132,18 @@ class MainActivity : AppCompatActivity() {
 
 //        startService()
 //        buildBlackRedDialog()
+//        buildUConfirmDialog()
+    }
+
+    private fun buildUConfirmDialog(){
+        var dialog = UIConfirmDialog()
+        dialog.title = "标题"
+        dialog.confirmText = "确定"
+        dialog.content = "欢迎来到安卓世界"
+        dialog.showHeaderTv = true
+
+        dialog?.show(supportFragmentManager, "ssss")
+//        dialog.mDialogHeigh
     }
 
     private fun buildBlackRedDialog(){
@@ -180,7 +190,14 @@ class MainActivity : AppCompatActivity() {
 //        startService()
 //            popSimpleDialog1("title",   "contentssssssss")
 //        showInputTextDialog(0, 500)
-        buildBlackRedDialog()
+//        buildBlackRedDialog()
+//        buildUConfirmDialog()
+        showVersionDialog()
+    }
+
+    fun showVersionDialog(){
+        var dialog = ShowVersionDialog()
+        dialog.show(supportFragmentManager,"ssere")
     }
 
     private  fun showInputTextDialog(x: Int, y: Int) {
