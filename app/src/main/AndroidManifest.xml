@@ -13,6 +13,41 @@
         android:theme="@style/Theme.KTDemo"
         tools:targetApi="31">
         <activity
+            android:name=".ItemRecycleTwo"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".DrawerDemoActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".drawer_demo"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".drawer"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".LayoutGuideLine"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ForResultFirstAct"
             android:exported="false">
             <meta-data
@@ -39,8 +74,11 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <service android:name=".service.ServiceStartDemo" android:enabled="true" android:exported="false"
-            />
+
+        <service
+            android:name=".service.ServiceStartDemo"
+            android:enabled="true"
+            android:exported="false" />
     </application>
 
 </manifest>

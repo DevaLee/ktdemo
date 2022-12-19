@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".MainActivity">
 
     <Button
@@ -14,18 +15,66 @@
         android:layout_marginTop="114dp"
         android:text="去下一页"
         android:onClick="toNextActivity"
+        android:background="@drawable/bg_1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <EditText
+        android:id="@+id/account_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button3"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        android:layout_marginTop="20dp"
+        android:text="我饥饿和反抗精神"
+        />
 
-    <TextView
-        android:id="@+id/textView_tv"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="126dp"
-        android:layout_marginTop="240dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="点击测试"
-        android:textSize="16sp"/>
+        app:layout_constraintStart_toStartOf="@+id/account_et"
+        app:layout_constraintTop_toBottomOf="@+id/account_et"
+        style="@style/IvDemo1"
+        android:scaleType="fitXY"
+        android:src="@drawable/shatanqiu"
+        />
+<!--    <Button-->
+<!--        android:id="@+id/button4"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/button3"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:text="button4"-->
+<!--        android:gravity="center"-->
+<!--        android:background="@drawable/bg_1"-->
+<!--        android:enabled="false"-->
+<!--        />-->
+
+
+<!--    <TextView-->
+<!--        android:id="@+id/textView_tv"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="126dp"-->
+<!--        android:layout_marginTop="240dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        android:text="点击测试"-->
+<!--        android:textSize="16sp"/>-->
+
+<!--    <View-->
+<!--        android:id="@+id/dash_line_1"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        app:layout_constraintHorizontal_weight="1"-->
+<!--        app:layout_constraintVertical_weight="1"-->
+<!--        android:background="@drawable/shape_dash_line_uf"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/textView_tv"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

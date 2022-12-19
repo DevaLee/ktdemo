@@ -1,16 +1,20 @@
 package com.example.ktdemo
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.nfc.Tag
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings.Global
 import android.util.Log
+import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewTreeObserver
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.example.ktdemo.fragment.*
@@ -52,6 +56,9 @@ class DbConnection {
 
 
 class MainActivity : AppCompatActivity() {
+    companion object {
+        val TAG = "K_MainActivity"
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -69,43 +76,44 @@ class MainActivity : AppCompatActivity() {
 //            println("结果: ${this.plus("-php")}")
 //        }
 
-        var btn = findViewById<Button>(R.id.button3)
+//        var btn = findViewById<Button>(R.id.button3)
+//
+//        btn.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+//            override fun onGlobalLayout() {
+//                var height = btn.height
+//                var width = btn.width
+//
+//                println("btn width: $width, height: $height")
+//                btn.viewTreeObserver.removeOnGlobalLayoutListener(this)
+//            }
+//
+//        });
+//
+//        btn.post(object : java.lang.Runnable{
+//            override fun run() {
+//                println("runnable width: ${btn.width}, height:${btn.height}")
+//            }
+//
+//        })
 
-        btn.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
-            override fun onGlobalLayout() {
-                var height = btn.height
-                var width = btn.width
-
-                println("btn width: $width, height: $height")
-                btn.viewTreeObserver.removeOnGlobalLayoutListener(this)
-            }
-
-        });
-
-        btn.post(object : java.lang.Runnable{
-            override fun run() {
-                println("runnable width: ${btn.width}, height:${btn.height}")
-            }
-
-        })
-
-        val textView = findViewById<TextView>(R.id.textView_tv)
-
-        textView.setOnTouchListener { p0, p1 ->
-            val downX = p1?.x
-            val downY = p1?.y
-
-            val rawX = p1?.rawX
-            val rawY = p1?.rawY
-
-            println("downX: $downX, downY: $downY, rawX:$rawX, rawY: $rawY")
-            false
-        }
-
-        textView.setOnClickListener {
-
-            println("on click listener")
-        }
+//        editTextTest()
+//        val textView = findViewById<TextView>(R.id.textView_tv)
+//
+//        textView.setOnTouchListener { p0, p1 ->
+//            val downX = p1?.x
+//            val downY = p1?.y
+//
+//            val rawX = p1?.rawX
+//            val rawY = p1?.rawY
+//
+//            println("downX: $downX, downY: $downY, rawX:$rawX, rawY: $rawY")
+//            false
+//        }
+//
+//        textView.setOnClickListener {
+//
+//            println("on click listener")
+//        }
 //      btn.setOnTouchListener(object  :View.OnTouchListener {
 //          @SuppressLint("ClickableViewAccessibility")
 //          override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
@@ -135,6 +143,21 @@ class MainActivity : AppCompatActivity() {
 //        buildUConfirmDialog()
     }
 
+    private fun editTextTest(){
+        var editText = findViewById<EditText>(R.id.account_et)
+        Log.d(TAG, ">>>>>>${editText.text}")
+        editText.requestFocus()
+        editText.setSelection(1)
+        editText.setOnEditorActionListener { v, actionId, event ->
+//            println("actionId: " + actionId)
+//            println("event: " + event)
+            Log.d(TAG, "actionId: " + actionId + " event: " + event)
+
+            true
+        }
+
+    }
+
     private fun buildUConfirmDialog(){
         var dialog = UIConfirmDialog()
         dialog.title = "标题"
@@ -153,23 +176,23 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    override fun onWindowFocusChanged(hasFocus: Boolean) {
-        super.onWindowFocusChanged(hasFocus)
-        var btn = findViewById<Button>(R.id.button3);
-        println("btn: width: ${btn.width}")
-
-        var displayMetrics  = resources.displayMetrics
-        println("screen width: ${displayMetrics.widthPixels}, height: ${displayMetrics.heightPixels}")
-
-        var  layoutParam = btn.layoutParams
-        layoutParam.width = 300
-        layoutParam.height = 100
-
-        btn.layoutParams = layoutParam
-
-
-
-    }
+//    override fun onWindowFocusChanged(hasFocus: Boolean) {
+//        super.onWindowFocusChanged(hasFocus)
+//        var btn = findViewById<Button>(R.id.button3);
+//        println("btn: width: ${btn.width}")
+//
+//        var displayMetrics  = resources.displayMetrics
+//        println("screen width: ${displayMetrics.widthPixels}, height: ${displayMetrics.heightPixels}")
+//
+//        var  layoutParam = btn.layoutParams
+//        layoutParam.width = 300
+//        layoutParam.height = 100
+//
+//        btn.layoutParams = layoutParam
+//
+//
+//
+//    }
     private fun startService(){
         startService(Intent(applicationContext, ServiceStartDemo::class.java))
     }
@@ -192,7 +215,33 @@ class MainActivity : AppCompatActivity() {
 //        showInputTextDialog(0, 500)
 //        buildBlackRedDialog()
 //        buildUConfirmDialog()
-        showVersionDialog()
+//        showVersionDialog()
+//        checkUserPermission(applicationContext,"rust.permission.user.TEST")
+//        toLayoutGuidePage()
+//        toDrawerActivity()
+        toRecycleView()
+    }
+
+    fun toRecycleView(){
+        var intent = Intent(applicationContext, ItemRecycleTwo::class.java)
+        startActivity(intent)
+    }
+
+    private fun toDrawerActivity(){
+        var intent = Intent(applicationContext, DrawerDemoActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun toLayoutGuidePage(){
+        var intent = Intent(applicationContext, LayoutGuideLine::class.java)
+        startActivity(intent)
+    }
+
+    fun checkUserPermission(context:Context, permissionName: String){
+        var permission = packageManager.checkPermission(permissionName, packageName)
+        var permissionTest = permission == PackageManager.PERMISSION_GRANTED
+        Toast.makeText(context,if (permissionTest) "Test YES!" else "Test NO!", Toast.LENGTH_SHORT).show()
+
     }
 
     fun showVersionDialog(){
