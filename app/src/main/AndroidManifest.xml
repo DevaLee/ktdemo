@@ -79,6 +79,14 @@
             android:name=".service.ServiceStartDemo"
             android:enabled="true"
             android:exported="false" />
-    </application>
 
+
+<!--        <uses-permission android:name="android.permission.INTERNET" />-->
+<!--        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
+<!--        <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />-->
+
+    </application>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 </manifest>

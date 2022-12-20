@@ -18,9 +18,11 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.example.ktdemo.fragment.*
+import com.example.ktdemo.multithread.MultiThread
 import com.example.ktdemo.service.ServiceStartDemo
 import com.example.ktdemo.testdat.DataParcel
 import com.example.ktdemo.testdat.DataTestExamine
+import com.example.ktdemo.thread.CorVm1
 import kotlinx.coroutines.*
 import java.lang.Thread.sleep
 import kotlin.concurrent.thread
@@ -219,7 +221,22 @@ class MainActivity : AppCompatActivity() {
 //        checkUserPermission(applicationContext,"rust.permission.user.TEST")
 //        toLayoutGuidePage()
 //        toDrawerActivity()
-        toRecycleView()
+//        toRecycleView()
+//        multiThreadTest()
+        viewModelScopeTest()
+    }
+
+    private fun viewModelScopeTest(){
+        val cor = CorVm1()
+//        cor.ioCor()
+//        cor.mainCor()
+//        cor.defaultCor()
+//        cor.unconfinedCor()
+        cor.reqGet()
+    }
+
+    fun multiThreadTest(){
+        MultiThread.test1()
     }
 
     fun toRecycleView(){

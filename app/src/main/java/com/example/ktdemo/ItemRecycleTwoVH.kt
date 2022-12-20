@@ -11,6 +11,8 @@ class ItemRecycleTwoVH (var itemView :View): RecyclerView.ViewHolder(itemView) {
     var tv3: TextView? = null
     var tv4: TextView? = null
 
+
+
     init {
         tv1 = itemView.findViewById<TextView>(R.id.tv1)
         tv2 = itemView.findViewById<TextView>(R.id.tv2)
