@@ -143,7 +143,17 @@ class MainActivity : AppCompatActivity() {
 //        startService()
 //        buildBlackRedDialog()
 //        buildUConfirmDialog()
+//        progressBarTest()
     }
+
+    private fun progressBarTest(){
+
+
+
+    }
+
+
+
 
     private fun editTextTest(){
         var editText = findViewById<EditText>(R.id.account_et)
